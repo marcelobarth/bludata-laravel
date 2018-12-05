@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Rotas para Site
+Route::group(['namespace' => 'Site'], function(){
+	Route::get('/', 'HomeController@index');
 });
+
+//Rotas para Painel
+Route::group(['namespace' => 'Painel', 'middleware' => 'auth'], function(){
+	Route::resource('painel', 'PainelController');
+});
+
+Auth::routes();
+
+/*Route::get('/home', 'HomeController@index')->name('home');*/
