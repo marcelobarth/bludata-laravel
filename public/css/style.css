@@ -1,3 +1,5 @@
+
+/*Configurações Padrão Laravel*/
 html, body {
 	background-color: #fff;
 	color: #636b6f;
@@ -48,3 +50,9 @@ html, body {
 .m-b-md {
 	margin-bottom: 30px;
 }
+
+/*Configurações Personalizadas*/
+.painel {
+	position: relative;
+}
+

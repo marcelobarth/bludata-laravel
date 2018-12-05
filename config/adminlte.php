@@ -116,7 +116,7 @@ return [
         ],
         [
             'text'        => 'Home',
-            'url'         => 'admin/pages',
+            'url'         => '/',
             'icon'        => 'home',
         ],
         'ENTIDADES',
@@ -125,16 +125,12 @@ return [
             'icon'    => 'building',
             'submenu' => [
                 [
+                    'text' => 'Listar',
+                    'url'  => 'listar/empresas',
+                ],
+                [
                     'text' => 'Cadastrar',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'Alterar',
-                    'url'     => '#',
-                ],
-                [
-                    'text' => 'Deletar',
-                    'url'  => '#',
+                    'url'  => 'empresa/create',
                 ],
             ],
         ],
@@ -142,21 +138,25 @@ return [
             'text'    => 'Formecedores',
             'icon'    => 'user',
             'submenu' => [
-                [
-                    'text' => 'Cadastrar',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'Alterar',
-                    'url'     => '#',
-                ],
-                [
-                    'text' => 'Deletar',
-                    'url'  => '#',
-                ],
+             [
+                'text' => 'Listar',
+                'url'  => '#',
+            ],
+            [
+                'text' => 'Cadastrar',
+                'url'  => '#',
+            ],
+            [
+                'text'    => 'Alterar',
+                'url'     => '#',
+            ],
+            [
+                'text' => 'Deletar',
+                'url'  => '#',
             ],
         ],
     ],
+],
 
     /*
     |--------------------------------------------------------------------------

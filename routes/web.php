@@ -19,8 +19,10 @@ Route::group(['namespace' => 'Site'], function(){
 //Rotas para Painel
 Route::group(['namespace' => 'Painel', 'middleware' => 'auth'], function(){
 	Route::resource('painel', 'PainelController');
+	Route::resource('empresa', 'EmpresaController');
+	Route::get('listar/empresas', 'EmpresaController@showAll');
+	Route::resource('fornecedor', 'FornecedorController');
 });
 
 Auth::routes();
 
-/*Route::get('/home', 'HomeController@index')->name('home');*/

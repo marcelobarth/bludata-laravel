@@ -11,6 +11,7 @@
 
     <!-- Styles -->
     <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
+
 </head>
 <body>
     <div class="flex-center position-ref full-height">
