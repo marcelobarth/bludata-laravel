@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Painel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Empresa;
+use App\Models\Fornecedor;
 
 class EmpresaController extends Controller
 {
@@ -27,12 +28,9 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-    	/*Titulo do form*/
-        $title = "Empresas";
         /*Pegar todas as categorias do BD e exibir quantidades de itens conforme $totalPage.*/
-        $data = $this->empresa->paginate($this->totalPage);
-
-        return view('painel.indexEmpresa', compact('data', 'title'));
+        $data = $this->empresa->orderBy('id','DESC')->paginate($this->totalPage);
+        return view('painel.indexEmpresa', compact('data'));
     }
 
 
@@ -146,19 +144,6 @@ class EmpresaController extends Controller
     		return redirect()->route('empresa.index');
     	else
     		return 'Falha ao apagar empresa!';
-    }
-
-
-
-    public function ajax(Request $request){
-
-        $pesquisa = $request->get('nome');
-
-        //pesquisa as empresas com o nome solicitado
-        $empresas = Empresa::where('nome_fantasia', 'LIKE', "%".$pesquisa."%")->get();
-
-        return $empresas;
-
     }
 
 }

@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Painel', 'middleware' => 'auth'], function(){
 	Route::resource('empresa', 'EmpresaController');
 	Route::get('listar/empresas', 'EmpresaController@showAll');
 	Route::resource('fornecedor', 'FornecedorController');
+	Route::get('listar/empresas', 'EmpresaController@showAll');
 });
 
 Auth::routes();

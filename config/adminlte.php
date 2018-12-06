@@ -119,7 +119,7 @@ return [
             'url'         => '/',
             'icon'        => 'home',
         ],
-        'ENTIDADES',
+        'GERENCIAR',
         [
             'text'    => 'Empresas',
             'icon'    => 'building',
@@ -140,19 +140,11 @@ return [
             'submenu' => [
              [
                 'text' => 'Listar',
-                'url'  => '#',
+                'url'  => 'listar/fornecedores',
             ],
             [
                 'text' => 'Cadastrar',
-                'url'  => '#',
-            ],
-            [
-                'text'    => 'Alterar',
-                'url'     => '#',
-            ],
-            [
-                'text' => 'Deletar',
-                'url'  => '#',
+                'url'  => 'fornecedor/create',
             ],
         ],
     ],

@@ -178,6 +178,8 @@ return [
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         //Collective
         Collective\Html\HtmlServiceProvider::class,
+        //geekcom/validator-docs
+        geekcom\ValidatorDocs\ValidatorProvider::class,
 
     ],
 

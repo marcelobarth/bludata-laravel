@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Fornecedor;
 
 /**
  * Class Empresa
  *
  * @property int id
+ * @property int uf
  * @property string $nome_fantasia
  * @property string $cnpj
  *
@@ -28,8 +30,16 @@ class Empresa extends Model
 
 	public $rules = [
 		'uf' => 'required',
-		'nome_fantasia' => 'required',
-		'cnpj' => 'required|max:18',
+		'nome_fantasia' => 'required|max:191',
+		'cnpj' => 'required|cnpj',
 	];
+
+	/**
+	 * Relacionamento entre classes, com Model Fornecedor.
+	 * Relacionamento 1 para N.
+	 */
+	public function fornecedor(){
+		return $this->hasMany(Fornecedor::class, 'empresa_id');
+	}
 
 }

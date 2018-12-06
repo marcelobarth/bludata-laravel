@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="col-md-12">
+<legend>EMPRESAS CADASTRADAS</legend>
 	<table class="table table-dark">
 		<thead>
 			<tr class="bg-primary">
