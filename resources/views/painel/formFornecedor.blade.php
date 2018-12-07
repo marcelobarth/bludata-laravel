@@ -1,18 +1,21 @@
 @extends('adminlte::page')
 
 @section('content')
-@if (isset($errors) && count($errors) > 0)
-<div class="alert alert-danger">
-	<!-- Personalização das mensagens de erros -->
-	@if (isset($fornecedor))
-	<h3>Falha ao editar!</h3>
-	@else
-	<h3>Falha ao cadastrar!</h3>
-	@endif
-	@foreach ($errors->all() as $error)
-	<h5>{!! $error !!}</h5>
-	@endforeach
-</div>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if(session()->has('message'))
+    <div class="alert alert-danger">
+        {{ session()->get('message') }}
+    </div>
 @endif
 
 <!-- Verificação para exibir o form de editar ou cadastrar. -->
@@ -63,7 +66,7 @@
 </div>
 <!-- Text input Data de Nascimento -->
 <div class="form-group">
-	{!! Form::label('data-nascimento', 'DATA NASCIMENTO'); !!}
+	{!! Form::label('data_nascimento', 'DATA NASCIMENTO'); !!}
 	{!! Form::date('data_nascimento', null, ['placeholder' => 'Digite o número do telefone', 'class' => 'form-control']); !!}
 </div>
 <!-- Buttons -->
@@ -108,13 +111,5 @@
 </div><!-- End Modal -->
 
 {!! Form::close() !!}
-
-@endsection
-
-@section('adminlte_js')
-    
-
-
-@yeld('js')
 
 @endsection

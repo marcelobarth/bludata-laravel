@@ -8,7 +8,7 @@ use App\Models\Empresa;
 /**
  * Class Fornecedor
  *
- * @property int $empresa
+ * @property int $empresa_id
  * @property string $nome
  * @property string $cpf_ou_cnpj
  * @property string $rg
@@ -33,17 +33,6 @@ class Fornecedor extends Model
 		'telefone_residencial',
 		'telefone_celular',
 		'data_nascimento',
-	];
-
-	public $rules = [
-		'empresa_id' => 'required|max:191',
-		'nome' => 'required|max:191',
-		'cpf_ou_cnpj' => 'required|formato_cpf_cnpj|cpf_cnpj',
-		'rg' => 'numeric',
-		'telefone_comercial' => 'max:10',
-		'telefone_residencial' => 'max:10',
-		'telefone_celular' => 'max:11',
-		'data_nascimento' => 'max:10',
 	];
 
 	/**

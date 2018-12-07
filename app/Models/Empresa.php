@@ -27,13 +27,7 @@ class Empresa extends Model
 		'nome_fantasia',
 		'cnpj'
 	];
-
-	public $rules = [
-		'uf' => 'required',
-		'nome_fantasia' => 'required|max:191',
-		'cnpj' => 'required|cnpj',
-	];
-
+	
 	/**
 	 * Relacionamento entre classes, com Model Fornecedor.
 	 * Relacionamento 1 para N.

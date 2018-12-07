@@ -1,18 +1,15 @@
 @extends('adminlte::page')
 
 @section('content')
-@if (isset($errors) && count($errors) > 0)
-<div class="alert alert-danger">
-	<!-- Personalização das mensagens de erros -->
-	@if (isset($data))
-	<h3>Falha ao editar!</h3>
-	@else
-	<h3>Falha ao cadastrar!</h3>
-	@endif
-	@foreach ($errors->all() as $error)
-	<h5>{!! $error !!}</h5>
-	@endforeach
-</div>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif
 
 <!-- Verificação para exibir o form de editar ou cadastrar. -->

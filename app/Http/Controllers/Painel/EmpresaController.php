@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Painel;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EmpresaRequest;
 use App\Models\Empresa;
 use App\Models\Fornecedor;
 
 class EmpresaController extends Controller
 {
 	private $empresa;
-	private $totalPage = 10;
+    private $validate;
+	private $totalPage = 8;
 
     /**
      * Injeção do objeto no contrutor para uso em toda a classe.
@@ -52,14 +54,16 @@ class EmpresaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmpresaRequest $request)
     {
     	/*Pega todos os dados vindos do form*/
-    	$data = $request->all();
-    	/*Validando os campos vindos do form*/
-    	$data = $this->validate($request, $this->empresa->rules);
+    	$empresa = $request->all();
+
+        /*Converte a primeira letra da palavra para maiúscula.*/
+        $empresa['nome_fantasia'] = ucwords($empresa['nome_fantasia']);
+
     	/*Salvando os dados validados no BD.*/
-    	$store = $this->empresa->create($data);
+    	$store = $this->empresa->create($empresa);
 
     	if ($store) 
     		return redirect()->route('empresa.index');
@@ -114,8 +118,6 @@ class EmpresaController extends Controller
     	/*Pega todos os dados vindos do form*/
     	$data = $request->all();
 
-    	/*Validando os campos vindos do form*/
-    	$data = $this->validate($request, $this->empresa->rules);
     	/*Buscar dados do BD pelo ID*/
     	$empresa = $this->empresa->find($id);
     	/*Salvando os dados validados no BD.*/
