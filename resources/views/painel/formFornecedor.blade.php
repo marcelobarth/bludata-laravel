@@ -2,20 +2,21 @@
 
 @section('content')
 
+<!-- Eixibição de erros Requests -->
 @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="alert alert-danger">
+	<ul>
+		@foreach ($errors->all() as $error)
+		<li>{{ $error }}</li>
+		@endforeach
+	</ul>
+</div>
 @endif
 
 @if(session()->has('message'))
-    <div class="alert alert-danger">
-        {{ session()->get('message') }}
-    </div>
+<div class="alert alert-danger">
+	{{ session()->get('message') }}
+</div>
 @endif
 
 <!-- Verificação para exibir o form de editar ou cadastrar. -->
@@ -30,7 +31,11 @@
 <!-- Text input Empresa -->
 <div class="form-group">
 	{!! Form::label('empresa_id', 'EMPRESA'); !!}
-	{!! Form::select('empresa_id', $empresas, null, ['placeholder' => 'Escolha uma Empresa', 'class' => 'form-control']); !!}
+	@if(!null  == ('$empresa->fornecedor->nome_fantasia'))
+	{!! Form::select('empresa_id', $empresa, null, ['placeholder' => 'Escolha uma Empresa', 'class' => 'form-control']); !!}
+	@else
+	{!! Form::select('empresa_id', $empresa, null, ['placeholder' => 'Escolha uma Empresa', 'class' => 'form-control']); !!}
+	@endif
 </div>
 <!-- Text input Nome -->
 <div class="form-group">
@@ -45,29 +50,29 @@
 <!-- Text input Rg -->
 <div class="form-group">
 	{!! Form::label('rg', 'RG'); !!}
-	{!! Form::text('rg', null, ['placeholder' => 'Digite o rg, se Pessoa Física', 'class' => 'form-control']); !!}
+	{!! Form::text('rg', null, ['placeholder' => 'Digite o rg, obrigatório para Pessoa Física', 'class' => 'form-control']); !!}
 </div>
 <div class="form-row">
 	<!-- Text input Telefone -->
 	<div class="form-group col-md-4">
 		{!! Form::label('telefone_comercial', 'FONE COMERCIAL.'); !!}
-		{!! Form::text('telefone_comercial', null, ['placeholder' => 'Digite o número', 'class' => 'input bfh-phone']); !!}
+		{!! Form::text('telefone_comercial', null, ['placeholder' => 'Digite o número o telefone comercial', 'class' => 'input bfh-phone']); !!}
 	</div>
 	<!-- Text input Telefone -->
 	<div class="form-group col-md-4">
 		{!! Form::label('telefone_residencial', 'FONE RESIDENCIAL.'); !!}
-		{!! Form::text('telefone_residencial', null, ['placeholder' => 'Digite o número', 'class' => 'input bfh-phone']); !!}
+		{!! Form::text('telefone_residencial', null, ['placeholder' => 'Digite o número o telefone residencial', 'class' => 'input bfh-phone']); !!}
 	</div>
 	<!-- Text input Telefone -->
 	<div class="form-group col-md-4">
 		{!! Form::label('telefone_celular', 'FONE CELULAR.'); !!}
-		{!! Form::text('telefone_celular', null, ['placeholder' => 'Digite o número', 'class' => 'input bfh-phone']); !!}
+		{!! Form::text('telefone_celular', null, ['placeholder' => 'Digite o número  o telefone celular', 'class' => 'input bfh-phone']); !!}
 	</div>
 </div>
 <!-- Text input Data de Nascimento -->
 <div class="form-group">
 	{!! Form::label('data_nascimento', 'DATA NASCIMENTO'); !!}
-	{!! Form::date('data_nascimento', null, ['placeholder' => 'Digite o número do telefone', 'class' => 'form-control']); !!}
+	{!! Form::date('data_nascimento', null, ['placeholder' => 'Digite a data de nascimento, obrigatório para Pessoa Física', 'class' => 'form-control']); !!}
 </div>
 <!-- Buttons -->
 <div class="row">

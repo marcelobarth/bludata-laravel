@@ -12,6 +12,8 @@
     <!-- Styles -->
     <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
 
+    <link  href="{!! asset('https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" rel="stylesheet" crossorigin="anonymous') !!}">
+
 </head>
 <body>
     <div class="flex-center position-ref full-height">
@@ -31,16 +33,12 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Laravel
+                Bludata
             </div>
 
             <div class="links">
-                <a href="https://laravel.com/docs">Documentation</a>
-                <a href="https://laracasts.com">Laracasts</a>
-                <a href="https://laravel-news.com">News</a>
-                <a href="https://nova.laravel.com">Nova</a>
-                <a href="https://forge.laravel.com">Forge</a>
-                <a href="https://github.com/laravel/laravel">GitHub</a>
+                 <a href="https://www.bludata.com.br/">Bludata</a>
+                 <a href="https://github.com/marcelobarth">GitHub</a>
             </div>
         </div>
     </div>

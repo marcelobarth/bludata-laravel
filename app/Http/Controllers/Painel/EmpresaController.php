@@ -28,11 +28,10 @@ class EmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        /*Pegar todas as categorias do BD e exibir quantidades de itens conforme $totalPage.*/
-        $data = $this->empresa->orderBy('id','DESC')->paginate($this->totalPage);
-        return view('painel.indexEmpresa', compact('data'));
+    public function index(){
+        /*Pegar todas as empresas do BD e exibir quantidades de itens conforme $totalPage.*/
+        $empresas = $this->empresa->orderBy('id','DESC')->paginate($this->totalPage);
+        return view('painel.indexEmpresa', compact('empresas'));
     }
 
 
@@ -41,8 +40,7 @@ class EmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function create()
-     {
+     public function create(){
      	/*Titulo do form*/
      	$title = "Cadastrar Empresa";
      	return view('painel.formEmpresa', compact('title'));
@@ -51,11 +49,10 @@ class EmpresaController extends Controller
     /**
      * Este método, processa o formulário de criação vindo do create e salva a nova empresa no banco de dados.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\FornecedorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EmpresaRequest $request)
-    {
+    public function store(EmpresaRequest $request){
     	/*Pega todos os dados vindos do form*/
     	$empresa = $request->all();
 
@@ -77,18 +74,16 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
     	/*Buscar dados do BD pelo ID*/
-    	$data = $this->empresa->find($id);
-    	return view('painel.indexEmpresa', compact('data'));
+    	$empresa = $this->empresa->find($id);
+    	return view('painel.indexEmpresa', compact('empresa'));
     }
 
-    public function showAll()
-    {
+    public function showAll(){
         /*Buscar dados do BD pelo ID*/
-        $data = $this->empresa->orderBy('id','DESC')->paginate($this->totalPage);
-        return view('painel.indexEmpresa', compact('data'));
+        $empresas = $this->empresa->orderBy('id','DESC')->paginate($this->totalPage);
+        return view('painel.indexEmpresa', compact('empresas'));
     }
 
     /**
@@ -97,29 +92,28 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id){
     	/*Buscar dados do BD pelo ID*/
-    	$data = $this->empresa->find($id);
+    	$empresa = $this->empresa->find($id);
     	/*Titulo do form*/
     	$title = "Editar Empresa";
-    	return view('painel.formEmpresa', compact('data', 'title'));
+    	return view('painel.formEmpresa', compact('empresa', 'title'));
     }
 
     /**
      * Este método, processa o formulário de criação de envio e salva a empresa no banco de dados.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\FornecedorRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(EmpresaRequest $request, $id){
     	/*Pega todos os dados vindos do form*/
     	$data = $request->all();
 
     	/*Buscar dados do BD pelo ID*/
     	$empresa = $this->empresa->find($id);
+
     	/*Salvando os dados validados no BD.*/
     	$update = $empresa->update($data);
 

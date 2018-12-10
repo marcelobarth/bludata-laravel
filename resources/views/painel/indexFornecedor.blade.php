@@ -2,8 +2,28 @@
 
 @section('content')
 
+<!-- Mensagens de erro -->
+@if(session()->has('message'))
+<div class="alert alert-danger">
+	{{ session()->get('message') }}
+</div>
+@endif
+
 <div class="col-md-12">
-<legend>FORNECEDORES CADASTRADOS</legend>
+	<div class="row d-flex bd-highlight" id="form-index">
+		<div class="form-inline ">
+			<div class="col-sm-4">
+				<legend>FORNECEDORES CADASTRADOS</legend>
+			</div>
+			<!-- Input Pesquisa -->
+			<div class="col-sm-8">
+				{!! Form::open(['url' => ['pesquisar/fornecedores'], 'id' => 'form-table', 'name' => 'pesquisa']) !!}
+				{!! Form::text('pesquisa', null, ['placeholder' => 'Digite uma palavra chave', 'class' => 'form-control']); !!}
+				{!! Form::button('Buscar', ['type' => 'submit', 'class' => 'btn btn-info']); !!}
+				{!! Form::close() !!}
+			</div>
+		</div>
+	</div>
 	<table class="table table-dark">
 		<thead>
 			<tr class="bg-primary">
@@ -25,7 +45,7 @@
 		<tbody>
 			<tr>
 				<td>{!! $forn->id !!}</td>
-				<td>{!! $forn->empresa_id !!}</td>
+				<td>{!! $forn->empresa->nome_fantasia !!}</td>
 				<td>{!! $forn->nome !!}</td>
 				<td>{!! $forn->cpf_ou_cnpj !!}</td>
 				<td>{!! $forn->rg !!}</td>

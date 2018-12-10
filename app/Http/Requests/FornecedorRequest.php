@@ -28,11 +28,11 @@ class FornecedorRequest extends FormRequest
             'empresa_id' => 'required|max:191',
             'nome' => 'required|max:191',
             'cpf_ou_cnpj' => 'required|formato_cpf_cnpj|cpf_cnpj',
-            'rg' => 'numeric',
-            'telefone_comercial' => 'max:10',
-            'telefone_residencial' => 'max:10',
-            'telefone_celular' => 'max:11',
-            'data_nascimento' => 'min:10|max:10',
+            'rg' => 'numeric|nullable',
+            'telefone_comercial' => 'numeric|max:10|nullable',
+            'telefone_residencial' => 'numeric|max:10|nullable',
+            'telefone_celular' => 'numeric|max:11|nullable',
+            'data_nascimento' => 'date|min:10|max:10|nullable',
         ];
     }
 

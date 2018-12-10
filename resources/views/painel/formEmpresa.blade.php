@@ -2,6 +2,7 @@
 
 @section('content')
 
+<!-- Eixibição de erros Requests -->
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -13,8 +14,8 @@
 @endif
 
 <!-- Verificação para exibir o form de editar ou cadastrar. -->
-@if(isset($data))
-{!! Form::model($data, ['route' => ['empresa.update', $data->id], 'class' => 'form', 'method' => 'put', 'id' => 'form-table']) !!}
+@if(isset($empresa))
+{!! Form::model($empresa, ['route' => ['empresa.update', $empresa->id], 'class' => 'form', 'method' => 'put', 'id' => 'form-table']) !!}
 @else
 {!! Form::open(['route' => 'empresa.store', 'id' => 'form-table']) !!}
 @endif
@@ -25,17 +26,17 @@
 <!-- Text input UF -->
 <div class="form-group">
 	{!! Form::label('uf', 'UF'); !!}
-	{!! Form::select('uf', ['AC' => 'Acre', 'AL' => 'Alagoas', 'AP' => 'Amapá', 'AM' => 'Amazonas', 'BA' => 'Bahia', 'CE' => 'Ceará', 'DF' => 'Distrito Federal', 'ES' => 'Espirito Santo', 'GO' => 'Goiás', 'MA' => 'Maranhão', 'MT' => 'Mato Grosso', 'MS' => 'Mato Grosso Sul', 'MG' => 'Minas Gerais', 'PA' => 'Pará', 'PB' => 'Paraíba', 'PR' => 'Paraná', 'PE' => 'Pernambuco', 'PI' => 'Piauí', 'RJ' => 'Rio de Janeiro', 'RN' => 'Rio Grande do Norte', 'RS' => 'Rio Grande do Sul', 'RO' => 'Rondônia', 'RR' => 'Roraima', 'SC' => 'Santa Catarina', 'SP' => 'São Paulo', 'SE' => 'Sergipe', 'TO' => 'Tocantins'], null, ['placeholder' => 'Seleciona o Estado', 'class' => 'form-control', 'id' => 'uf', 'value' => '$data->empresa']); !!}
+	{!! Form::select('uf', ['AC' => 'Acre', 'AL' => 'Alagoas', 'AP' => 'Amapá', 'AM' => 'Amazonas', 'BA' => 'Bahia', 'CE' => 'Ceará', 'DF' => 'Distrito Federal', 'ES' => 'Espirito Santo', 'GO' => 'Goiás', 'MA' => 'Maranhão', 'MT' => 'Mato Grosso', 'MS' => 'Mato Grosso Sul', 'MG' => 'Minas Gerais', 'PA' => 'Pará', 'PB' => 'Paraíba', 'PR' => 'Paraná', 'PE' => 'Pernambuco', 'PI' => 'Piauí', 'RJ' => 'Rio de Janeiro', 'RN' => 'Rio Grande do Norte', 'RS' => 'Rio Grande do Sul', 'RO' => 'Rondônia', 'RR' => 'Roraima', 'SC' => 'Santa Catarina', 'SP' => 'São Paulo', 'SE' => 'Sergipe', 'TO' => 'Tocantins'], null, ['placeholder' => 'Seleciona o Estado', 'class' => 'form-control', 'id' => 'uf', 'value' => '$empresa->empresa']); !!}
 </div>
 <!-- Text input Nome Fantasia -->
 <div class="form-group">
 	{!! Form::label('nome_fantasia', 'NOME FANTASIA'); !!}
-	{!! Form::text('nome_fantasia', null, ['placeholder' => 'Digite o nome fantasia da empresa', 'class' => 'form-control', 'id' => 'nome_fantasia', 'name' => 'nome_fantasia', 'value' => '$data->nome_fantasia']); !!}
+	{!! Form::text('nome_fantasia', null, ['placeholder' => 'Digite o nome fantasia da empresa', 'class' => 'form-control', 'id' => 'nome_fantasia', 'name' => 'nome_fantasia', 'value' => '$empresa->nome_fantasia']); !!}
 </div>
 <!-- Text input Cpf_ou_Cnpj -->
 <div class="form-group">
 	{!! Form::label('cnpj', 'CNPJ'); !!}
-	{!! Form::text('cnpj', null, ['placeholder' => 'Digite o cnpj da empresa', 'class' => 'form-control', 'id' => 'cnpj', 'name' => 'cnpj', 'value' => '$data->cnpj']); !!}
+	{!! Form::text('cnpj', null, ['placeholder' => 'Digite o cnpj da empresa', 'class' => 'form-control', 'id' => 'cnpj', 'name' => 'cnpj', 'value' => '$empresa->cnpj']); !!}
 </div>
 <!-- Buttons -->
 <div class="row">
@@ -64,7 +65,7 @@
 
 			<!-- Personalização das mensagens de alerta -->
 			<div class="modal-body">
-				@if (isset($data))
+				@if (isset($empresa))
 				Deseja salvar as modificações?
 				@else
 				Deseja salvar nova empresa?

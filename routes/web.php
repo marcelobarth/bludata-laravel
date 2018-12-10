@@ -21,8 +21,10 @@ Route::group(['namespace' => 'Painel', 'middleware' => 'auth'], function(){
 	Route::resource('painel', 'PainelController');
 	Route::resource('empresa', 'EmpresaController');
 	Route::get('listar/empresas', 'EmpresaController@showAll');
+	Route::any('pesquisar/empresas','FornecedorController@pesquisar');
 	Route::resource('fornecedor', 'FornecedorController');
-	Route::get('listar/empresas', 'EmpresaController@showAll');
+	Route::get('listar/fornecedores', 'FornecedorController@showAll');
+	Route::any('pesquisar/fornecedores','FornecedorController@pesquisar');
 });
 
 Auth::routes();

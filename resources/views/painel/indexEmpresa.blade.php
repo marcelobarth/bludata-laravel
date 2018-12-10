@@ -3,7 +3,20 @@
 @section('content')
 
 <div class="col-md-12">
-<legend>EMPRESAS CADASTRADAS</legend>
+	<div class="row d-flex bd-highlight" id="form-index">
+		<div class="form-inline ">
+			<div class="col-sm-4">
+				<legend>EMPRESAS CADASTRADAS</legend>
+			</div>
+			<!-- Input Pesquisa -->
+			<div class="col-sm-8">
+				{!! Form::open(['url' => ['pesquisar/empresas'], 'id' => 'form-table', 'name' => 'pesquisa']) !!}
+				{!! Form::text('pesquisa', null, ['placeholder' => 'Digite uma palavra chave', 'class' => 'form-control']); !!}
+				{!! Form::button('Buscar', ['type' => 'submit', 'class' => 'btn btn-info']); !!}
+				{!! Form::close() !!}
+			</div>
+		</div>
+	</div>
 	<table class="table table-dark">
 		<thead>
 			<tr class="bg-primary">
@@ -15,7 +28,7 @@
 			</tr>
 		</thead>
 
-		@foreach($data as $emp)
+		@foreach($empresas as $emp)
 
 		<tbody>
 			<tr>
@@ -51,7 +64,7 @@
 							</div>
 							<!-- Mensagem de alerta -->
 							<div class="modal-body">
-								Deseja mesmo apagar partitura?
+								Deseja mesmo apagar empresa?
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -60,7 +73,7 @@
 						</div>
 					</div>
 				</div><!-- End Modal -->
-				<!-- Fechamento do Form Delete para podepegar o submit do button Apagar Modal -->
+				<!-- Fechamento do Form Delete para pegar o submit do button Apagar Modal -->
 				{!! Form::close() !!}
 			</tr>
 		</tbody>
@@ -70,7 +83,7 @@
 	</table>
 
 	<!-- Método para paginação -->
-	{!! $data->links() !!}
+	{!! $empresas->links() !!}
 
 </div>
 

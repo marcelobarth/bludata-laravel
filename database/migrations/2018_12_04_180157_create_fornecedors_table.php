@@ -19,11 +19,11 @@ class CreateFornecedorsTable extends Migration
             $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
             $table->string('nome');
             $table->string('cpf_ou_cnpj');
-            $table->string('rg');
-            $table->string('telefone_comercial');
-            $table->string('telefone_residencial');
-            $table->string('telefone_celular');
-            $table->date('data_nascimento');
+            $table->string('rg')->nullable();
+            $table->string('telefone_comercial')->nullable();
+            $table->string('telefone_residencial')->nullable();
+            $table->string('telefone_celular')->nullable();
+            $table->date('data_nascimento')->nullable();
             $table->timestamps();
         });
     }
